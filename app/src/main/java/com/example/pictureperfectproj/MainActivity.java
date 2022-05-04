@@ -97,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleLoadingSpinner() {
         while (true) {
-            while (isLoading == true) {
+            while (isLoading) {
                 loadingBar.setVisibility(View.VISIBLE);
             }
-            while (isLoading == false) {
+            while (!isLoading) {
                 loadingBar.setVisibility(View.INVISIBLE);
             }
         }
