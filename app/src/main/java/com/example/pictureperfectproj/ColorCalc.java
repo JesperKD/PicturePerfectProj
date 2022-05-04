@@ -13,9 +13,10 @@ public class ColorCalc {
     static List<RgbObj> rgbValues = new ArrayList<>();
 
     public static int[] GetColors(Bitmap imageBitmap) {
+        MainActivity.isLoading = true;
 
-        for (int y = 0; y < imageBitmap.getHeight(); y++) {
-            for (int x = 0; x < imageBitmap.getWidth(); x++) {
+        for (int y = 0; y < imageBitmap.getHeight() / 2; y++) {
+            for (int x = 0; x < imageBitmap.getWidth() / 2; x++) {
                 // Getting pixel color by position x and y
                 int clr = imageBitmap.getPixel(x, y);
                 int red = (clr & 0x00ff0000) >> 16;
@@ -33,13 +34,15 @@ public class ColorCalc {
 
         sortByOccurrence();
 
-        int color1 = Color.rgb(rgbValues.get(1).Red, rgbValues.get(1).Green, rgbValues.get(1).Blue);
-        int color2 = Color.rgb(rgbValues.get(2).Red, rgbValues.get(2).Green, rgbValues.get(2).Blue);
-        int color3 = Color.rgb(rgbValues.get(3).Red, rgbValues.get(3).Green, rgbValues.get(3).Blue);
-        int color4 = Color.rgb(rgbValues.get(4).Red, rgbValues.get(4).Green, rgbValues.get(4).Blue);
-        int color5 = Color.rgb(rgbValues.get(5).Red, rgbValues.get(5).Green, rgbValues.get(5).Blue);
+        int color1 = Color.rgb(rgbValues.get(0).Red, rgbValues.get(0).Green, rgbValues.get(0).Blue);
+        int color2 = Color.rgb(rgbValues.get(1).Red, rgbValues.get(1).Green, rgbValues.get(1).Blue);
+        int color3 = Color.rgb(rgbValues.get(2).Red, rgbValues.get(2).Green, rgbValues.get(2).Blue);
+        int color4 = Color.rgb(rgbValues.get(3).Red, rgbValues.get(3).Green, rgbValues.get(3).Blue);
+        int color5 = Color.rgb(rgbValues.get(4).Red, rgbValues.get(4).Green, rgbValues.get(4).Blue);
 
         int[] colorArray = {color1, color2, color3, color4, color5};
+
+        MainActivity.isLoading = false;
 
         return colorArray;
     }
