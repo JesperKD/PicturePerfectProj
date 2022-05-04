@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/PictureButton"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="46dp"
+        android:text="Take Picture"
+        app:layout_constraintBottom_toTopOf="@+id/colorBtn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="98dp"
+        app:layout_constraintBottom_toTopOf="@+id/PictureButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/colorBtn1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="58dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/black"
+        android:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/colorBtn5"
+        app:layout_constraintEnd_toStartOf="@+id/colorBtn2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PictureButton" />
+
+    <Button
+        android:id="@+id/colorBtn2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/black"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="@+id/colorBtn3"
+        app:layout_constraintEnd_toStartOf="@+id/colorBtn3"
+        app:layout_constraintStart_toEndOf="@+id/colorBtn1"
+        app:layout_constraintTop_toTopOf="@+id/colorBtn1" />
+
+    <Button
+        android:id="@+id/colorBtn3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="183dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/black"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colorBtn2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/colorBtn4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginEnd="87dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/black"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="@+id/colorBtn5"
+        app:layout_constraintEnd_toStartOf="@+id/colorBtn5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/colorBtn5" />
+
+    <Button
+        android:id="@+id/colorBtn5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="77dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/black"
+        android:text="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colorBtn4"
+        app:layout_constraintTop_toBottomOf="@+id/colorBtn1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
