@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Shows or hides visualisation of data loading, based on a boolean.
+     * Shows or hides progress Spinner, based on a boolean.
      */
     private void handleLoadingSpinner() {
         while (true) {
