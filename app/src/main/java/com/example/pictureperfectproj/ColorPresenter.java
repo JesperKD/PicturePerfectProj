@@ -56,8 +56,7 @@ public class ColorPresenter {
      * Finds all distinct RGB Values in a Bitmap Image
      *
      * @param imageBitmap image to find pixels from
-     * @return  list of RgbO Objects containing the color values
-     *
+     * @return list of RgbObjects containing the color values from given image
      */
     private List<RgbObj> GetRgbValues(@NonNull Bitmap imageBitmap) {
         List<RgbObj> rgbValues = new ArrayList<>();
