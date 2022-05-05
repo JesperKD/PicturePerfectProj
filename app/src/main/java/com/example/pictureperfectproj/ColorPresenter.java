@@ -71,7 +71,7 @@ public class ColorPresenter {
     }
 
     /**
-     * Sorts the list of RgbValues by occurrences
+     * Sorts the list of RgbValues by occurrences, using custom comparator
      */
     private static void sortListByOccurrence() {
         rgbValues.sort(new Comparator<RgbObj>() {
