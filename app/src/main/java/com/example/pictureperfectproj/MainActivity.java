@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     ColorPresenter cp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,11 +100,21 @@ public class MainActivity extends AppCompatActivity {
      * @param colorArray Array of most commonly found RGB Values
      */
     public void ShowCommonColors(@NonNull int[] colorArray) {
-        changeButtonColor(colorBtn1, colorArray[0]);
-        changeButtonColor(colorBtn2, colorArray[1]);
-        changeButtonColor(colorBtn3, colorArray[2]);
-        changeButtonColor(colorBtn4, colorArray[3]);
-        changeButtonColor(colorBtn5, colorArray[4]);
+        if (colorArray.length > 0) {
+            changeButtonColor(colorBtn1, colorArray[0]);
+        }
+        if (colorArray.length > 1) {
+            changeButtonColor(colorBtn2, colorArray[1]);
+        }
+        if (colorArray.length > 2) {
+            changeButtonColor(colorBtn3, colorArray[2]);
+        }
+        if (colorArray.length > 3) {
+            changeButtonColor(colorBtn4, colorArray[3]);
+        }
+        if (colorArray.length > 4) {
+            changeButtonColor(colorBtn5, colorArray[4]);
+        }
     }
 
     /**
