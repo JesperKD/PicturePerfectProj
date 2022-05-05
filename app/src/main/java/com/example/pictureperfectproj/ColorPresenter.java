@@ -36,7 +36,7 @@ public class ColorPresenter {
             color3 = Color.rgb(rgbValues.get(2).Red, rgbValues.get(2).Green, rgbValues.get(2).Blue);
             color4 = Color.rgb(rgbValues.get(3).Red, rgbValues.get(3).Green, rgbValues.get(3).Blue);
             color5 = Color.rgb(rgbValues.get(4).Red, rgbValues.get(4).Green, rgbValues.get(4).Blue);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -53,6 +53,7 @@ public class ColorPresenter {
      * @param imageBitmap image to find pixels from
      * @return list of RgbObjects containing the color values from given image
      */
+    @NonNull
     private List<RgbObj> GetRgbValues(@NonNull Bitmap imageBitmap) {
         List<RgbObj> rgbValues = new ArrayList<>();
         RgbObj lastObj = null;
@@ -112,7 +113,7 @@ public class ColorPresenter {
      *
      * @param rgbValues RgbObj listToBeSorted
      */
-    private void sortListByOccurrence(List<RgbObj> rgbValues) {
+    private void sortListByOccurrence(@NonNull List<RgbObj> rgbValues) {
         rgbValues.sort(new Comparator<RgbObj>() {
             @Override
             public int compare(RgbObj a1, RgbObj a2) {

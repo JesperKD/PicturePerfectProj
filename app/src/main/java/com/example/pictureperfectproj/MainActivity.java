@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.PictureButton);
         button.setOnClickListener(v -> dispatchTakePictureIntent());
 
-        startLoadingThread();
+        //Todo: Find way to avoid thread collision with main thread.
+        /*startLoadingThread();*/
     }
 
     /**
