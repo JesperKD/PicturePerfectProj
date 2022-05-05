@@ -56,6 +56,7 @@ public class ColorPresenter {
     @NonNull
     private List<RgbObj> GetRgbValues(@NonNull Bitmap imageBitmap) {
         List<RgbObj> rgbValues = new ArrayList<>();
+
         RgbObj lastObj = null;
         int minDistance = 5;
 
@@ -70,16 +71,20 @@ public class ColorPresenter {
 
                 RgbObj freshObj = new RgbObj(red, green, blue);
 
-                if (lastObj == null) {
-                    rgbValues.add(freshObj);
-                    lastObj = freshObj;
-                } else {
-                    //Calculating the euclidean distance between 2 RGB values to only save distinct
-                    double distance = calculateEuclideanDistance(lastObj, freshObj);
-                    if (distance > minDistance) {
+                if(isNotBlack(freshObj) && isNotWhite(freshObj)){
+
+                    if (lastObj == null) {
                         rgbValues.add(freshObj);
                         lastObj = freshObj;
+                    } else {
+                        //Calculating the euclidean distance between 2 RGB values to only save distinct
+                        double distance = calculateEuclideanDistance(lastObj, freshObj);
+                        if (distance > minDistance) {
+                            rgbValues.add(freshObj);
+                            lastObj = freshObj;
+                        }
                     }
+
                 }
             }
         }
@@ -120,6 +125,26 @@ public class ColorPresenter {
                 return a1.Occurrence - a2.Occurrence;
             }
         }.reversed());
+    }
+
+    private boolean isNotBlack(RgbObj rgbObject) {
+        RgbObj blackObj = new RgbObj(0, 0, 0);
+        double distance = calculateEuclideanDistance(blackObj, rgbObject);
+        if (distance > 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isNotWhite(RgbObj rgbObject) {
+        RgbObj whiteObj = new RgbObj(255, 255, 255);
+        double distance = calculateEuclideanDistance(whiteObj, rgbObject);
+        if (distance > 3) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
