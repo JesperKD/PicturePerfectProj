@@ -105,10 +105,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Sets a given color to a given button.
+     * Sets a new background color on a button.
      *
      * @param color given color
-     * @param btn given button
+     * @param btn   given button
      */
     private void changeButtonColor(@NonNull Button btn, int color) {
         Drawable buttonDrawable = btn.getBackground();
