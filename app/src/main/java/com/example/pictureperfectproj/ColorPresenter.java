@@ -12,12 +12,12 @@ import java.util.List;
 
 public class ColorPresenter {
 
-    static List<RgbObj> rgbValues = new ArrayList<>();
+    private List<RgbObj> rgbValues = new ArrayList<>();
 
     /**
      * Finds the 5 most common RGB values from a given Bitmap image
      */
-    public static int[] setCommonColors(Bitmap imageBitmap) {
+    public int[] setCommonColors(Bitmap imageBitmap) {
         MainActivity.isLoading = true;
 
         GetRgbValues(imageBitmap);
@@ -38,7 +38,7 @@ public class ColorPresenter {
     /**
      * Finds all RGB Values in a Bitmap Image
      */
-    private static void GetRgbValues(@NonNull Bitmap imageBitmap) {
+    private void GetRgbValues(@NonNull Bitmap imageBitmap) {
         for (int y = 0; y < imageBitmap.getHeight() / 2; y++) {
             for (int x = 0; x < imageBitmap.getWidth() / 2; x++) {
                 // Getting pixel color by position x and y
@@ -62,7 +62,7 @@ public class ColorPresenter {
     /**
      * returns the amount of times a given object occurs in a collection
      */
-    private static int getOccurrences(@NonNull Collection<?> c, Object o) {
+    private int getOccurrences(@NonNull Collection<?> c, Object o) {
         int count = 0;
         for (Object e : c)
             if (e.equals(o))
@@ -73,7 +73,7 @@ public class ColorPresenter {
     /**
      * Sorts the list of RgbValues by occurrences, using custom comparator
      */
-    private static void sortListByOccurrence() {
+    private void sortListByOccurrence() {
         rgbValues.sort(new Comparator<RgbObj>() {
             @Override
             public int compare(RgbObj a1, RgbObj a2) {

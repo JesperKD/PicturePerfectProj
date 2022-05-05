@@ -27,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar loadingBar;
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
+    ColorPresenter cp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        cp = new ColorPresenter();
 
         colorBtn1 = findViewById(R.id.colorBtn1);
         colorBtn2 = findViewById(R.id.colorBtn2);
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
      * @param imageBitmap Bitmap
      */
     private void startColorThread(Bitmap imageBitmap) {
-        Thread colorThread = new Thread(() -> ShowCommonColors(ColorPresenter.setCommonColors(imageBitmap)));
+        Thread colorThread = new Thread(() -> ShowCommonColors(cp.setCommonColors(imageBitmap)));
         colorThread.start();
     }
 
