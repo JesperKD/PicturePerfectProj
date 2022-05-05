@@ -6,13 +6,11 @@ public class RgbObj {
     public int Blue;
     public int Occurrence;
 
-
     public RgbObj(int red, int green, int blue) {
         this.Red = red;
         this.Green = green;
         this.Blue = blue;
     }
-
 
     /**
      * Custom override of the equals method to fit the object

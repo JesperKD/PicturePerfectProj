@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         } catch (ActivityNotFoundException e) {
-            // display error state to the user
             e.printStackTrace();
         }
     }
