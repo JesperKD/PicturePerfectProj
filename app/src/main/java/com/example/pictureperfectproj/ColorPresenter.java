@@ -29,20 +29,15 @@ public class ColorPresenter {
         int color4 = 0;
         int color5 = 0;
 
-        if (rgbValues.size() > 0) {
+
+        try {
             color1 = Color.rgb(rgbValues.get(0).Red, rgbValues.get(0).Green, rgbValues.get(0).Blue);
-        }
-        if (rgbValues.size() > 1) {
             color2 = Color.rgb(rgbValues.get(1).Red, rgbValues.get(1).Green, rgbValues.get(1).Blue);
-        }
-        if (rgbValues.size() > 2) {
             color3 = Color.rgb(rgbValues.get(2).Red, rgbValues.get(2).Green, rgbValues.get(2).Blue);
-        }
-        if (rgbValues.size() > 3) {
             color4 = Color.rgb(rgbValues.get(3).Red, rgbValues.get(3).Green, rgbValues.get(3).Blue);
-        }
-        if (rgbValues.size() > 4) {
             color5 = Color.rgb(rgbValues.get(4).Red, rgbValues.get(4).Green, rgbValues.get(4).Blue);
+        } catch (Exception e){
+            e.printStackTrace();
         }
 
         int[] colorArray = {color1, color2, color3, color4, color5};
@@ -61,7 +56,7 @@ public class ColorPresenter {
     private List<RgbObj> GetRgbValues(@NonNull Bitmap imageBitmap) {
         List<RgbObj> rgbValues = new ArrayList<>();
         RgbObj lastObj = null;
-        int minDistance = 3;
+        int minDistance = 5;
 
 
         for (int y = 0; y < imageBitmap.getHeight(); y++) {
