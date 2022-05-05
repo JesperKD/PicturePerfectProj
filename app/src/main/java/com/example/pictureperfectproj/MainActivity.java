@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 
@@ -41,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.PictureButton);
         button.setOnClickListener(v -> dispatchTakePictureIntent());
 
-        Thread loadingThread = new Thread(() -> {
-            handleLoadingSpinner();
-        });
-        loadingThread.start();
+        startLoadingThread();
     }
 
     /**
@@ -60,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -67,17 +66,37 @@ public class MainActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
-            ImageView imageView = findViewById(R.id.imageView);
-            imageView.setImageBitmap(imageBitmap);
-
-            Thread newThread = new Thread(() -> {
-                ShowCommonColors(ColorCalc.GetColors(imageBitmap));
-            });
-            newThread.start();
+            setImageView(imageBitmap);
+            startColorThread(imageBitmap);
         }
     }
 
-    public void ShowCommonColors(int[] colorArray) {
+    /**
+     * Sets the imageview to a given Bitmap image
+     *
+     * @param imageBitmap Bitmap
+     */
+    private void setImageView(Bitmap imageBitmap) {
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setImageBitmap(imageBitmap);
+    }
+
+    /**
+     * Starts the entire pixel finding/sorting process
+     *
+     * @param imageBitmap Bitmap
+     */
+    private void startColorThread(Bitmap imageBitmap) {
+        Thread colorThread = new Thread(() -> ShowCommonColors(ColorPresenter.setCommonColors(imageBitmap)));
+        colorThread.start();
+    }
+
+    /**
+     * Updates colors on all 5 buttons
+     *
+     * @param colorArray Array of most commonly found RGB Values
+     */
+    public void ShowCommonColors(@NonNull int[] colorArray) {
         changeButtonColor(colorBtn1, colorArray[0]);
         changeButtonColor(colorBtn2, colorArray[1]);
         changeButtonColor(colorBtn3, colorArray[2]);
@@ -85,16 +104,30 @@ public class MainActivity extends AppCompatActivity {
         changeButtonColor(colorBtn5, colorArray[4]);
     }
 
-    private void changeButtonColor(Button btn, int color) {
-
+    /**
+     * Sets a given color to a given button.
+     *
+     * @param color given color
+     * @param btn given button
+     */
+    private void changeButtonColor(@NonNull Button btn, int color) {
         Drawable buttonDrawable = btn.getBackground();
         buttonDrawable = DrawableCompat.wrap(buttonDrawable);
-        //the color is a direct color int and not a color resource
         DrawableCompat.setTint(buttonDrawable, color);
         btn.setBackground(buttonDrawable);
-
     }
 
+    /**
+     * Starts spinner manager thread
+     */
+    private void startLoadingThread() {
+        Thread loadingThread = new Thread(this::handleLoadingSpinner);
+        loadingThread.start();
+    }
+
+    /**
+     * Shows or hides visualisation of data loading, based on a boolean.
+     */
     private void handleLoadingSpinner() {
         while (true) {
             while (isLoading) {
