@@ -6,19 +6,19 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
- *  Activity for loading layout resources
+ * Activity for loading layout resources
  *
  * @author Jesp446c
+ * @version 1.0
+ * @since 1.0
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button colorBtn3;
     private Button colorBtn4;
     private Button colorBtn5;
-    private ProgressBar loadingBar;
+    /*private ProgressBar loadingBar;*/
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     ColorPresenter cp;
@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         colorBtn3 = findViewById(R.id.colorBtn3);
         colorBtn4 = findViewById(R.id.colorBtn4);
         colorBtn5 = findViewById(R.id.colorBtn5);
-        loadingBar = findViewById(R.id.progressBar1);
+
+        //loadingBar = findViewById(R.id.progressBar1);
 
         Button button = findViewById(R.id.PictureButton);
         button.setOnClickListener(v -> dispatchTakePictureIntent());
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Sets the imageview to a given Bitmap image
      *
-     * @param imageBitmap Bitmap
+     * @param imageBitmap Image for the imageView
      */
     private void setImageView(Bitmap imageBitmap) {
         ImageView imageView = findViewById(R.id.imageView);
@@ -125,18 +126,15 @@ public class MainActivity extends AppCompatActivity {
         btn.setBackground(buttonDrawable);
     }
 
-    /**
-     * Starts spinner manager thread
-     */
-    private void startLoadingThread() {
+
+    //Starts spinner manager thread
+    /*private void startLoadingThread() {
         Thread loadingThread = new Thread(this::handleLoadingSpinner);
         loadingThread.start();
-    }
+    }*/
 
-    /**
-     * Shows or hides progress Spinner, based on a boolean.
-     */
-    private void handleLoadingSpinner() {
+    //Shows or hides progress Spinner, based on a boolean.
+    /*private void handleLoadingSpinner() {
         while (true) {
             while (isLoading) {
                 loadingBar.setVisibility(View.VISIBLE);
@@ -145,5 +143,5 @@ public class MainActivity extends AppCompatActivity {
                 loadingBar.setVisibility(View.INVISIBLE);
             }
         }
-    }
+    }*/
 }

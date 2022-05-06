@@ -15,6 +15,8 @@ import java.util.List;
  *
  *
  * @author Jesp446c
+ * @version 1.0
+ * @since 1.0
  * */
 public class ColorPresenter {
 
@@ -34,7 +36,6 @@ public class ColorPresenter {
         int color3 = 0;
         int color4 = 0;
         int color5 = 0;
-
 
         try {
             color1 = Color.rgb(rgbValues.get(0).Red, rgbValues.get(0).Green, rgbValues.get(0).Blue);
@@ -62,19 +63,20 @@ public class ColorPresenter {
     @NonNull
     private List<RgbObj> GetRgbValues(@NonNull Bitmap imageBitmap) {
         List<RgbObj> rgbValues = new ArrayList<>();
-
         RgbObj lastObj = null;
         int minDistance = 5;
 
-
+        //looping through all pixels of the image
         for (int y = 0; y < imageBitmap.getHeight(); y++) {
             for (int x = 0; x < imageBitmap.getWidth(); x++) {
+
                 // Getting pixel color by position x and y
                 int clr = imageBitmap.getPixel(x, y);
                 int red = (clr & 0x00ff0000) >> 16;
                 int green = (clr & 0x0000ff00) >> 8;
                 int blue = clr & 0x000000ff;
 
+                // Saving pixel colors in Rgb Object
                 RgbObj freshObj = new RgbObj(red, green, blue);
 
                 //Determines whether the rgb of the pixel is black or white
@@ -166,7 +168,7 @@ public class ColorPresenter {
      *
      * @param rgb1 rgb value 1
      * @param rgb2 rgb value 2
-     * @return double
+     * @return double Result of the Euclidean Equation
      */
     private double calculateEuclideanDistance(@NonNull RgbObj rgb1, @NonNull RgbObj rgb2) {
         return Math.sqrt(
