@@ -71,13 +71,15 @@ public class ColorPresenter {
 
                 RgbObj freshObj = new RgbObj(red, green, blue);
 
-                if(isNotBlack(freshObj) && isNotWhite(freshObj)){
+                //Determines whether the rgb of the pixel is black or white
+                if (isNotBlack(freshObj) && isNotWhite(freshObj)) {
 
+                    //Null check
                     if (lastObj == null) {
                         rgbValues.add(freshObj);
                         lastObj = freshObj;
                     } else {
-                        //Calculating the euclidean distance between 2 RGB values to only save distinct
+                        //Calculating the euclidean distance between 2 RGB values to only save distinct colors
                         double distance = calculateEuclideanDistance(lastObj, freshObj);
                         if (distance > minDistance) {
                             rgbValues.add(freshObj);
@@ -127,6 +129,12 @@ public class ColorPresenter {
         }.reversed());
     }
 
+    /**
+     * Method to determine if a given rgbObject is black
+     *
+     * @param rgbObject rgbObject to test
+     * @return True if not Black, False if Black
+     */
     private boolean isNotBlack(RgbObj rgbObject) {
         RgbObj blackObj = new RgbObj(0, 0, 0);
         double distance = calculateEuclideanDistance(blackObj, rgbObject);
@@ -137,9 +145,15 @@ public class ColorPresenter {
         }
     }
 
+    /**
+     * Method to determine if a given rgbObject is white
+     *
+     * @param rgbObject rgbObject to test
+     * @return True if not White, False if white
+     */
     private boolean isNotWhite(RgbObj rgbObject) {
         RgbObj whiteObj = new RgbObj(255, 255, 255);
-        double distance = calculateEuclideanDistance(whiteObj, rgbObject);
+        double distance = calculateEuclideanDistance(rgbObject, whiteObj);
         if (distance > 3) {
             return true;
         } else {
