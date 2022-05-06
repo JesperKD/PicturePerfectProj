@@ -15,6 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+/**
+ *  Activity for loading layout resources
+ *
+ * @author Jesp446c
+ */
 public class MainActivity extends AppCompatActivity {
 
     public static boolean isLoading = false;

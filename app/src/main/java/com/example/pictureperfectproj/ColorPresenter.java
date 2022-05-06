@@ -10,6 +10,12 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ *  Class for handling all color calculation and sorting
+ *
+ *
+ * @author Jesp446c
+ * */
 public class ColorPresenter {
 
     /**
@@ -138,31 +144,25 @@ public class ColorPresenter {
     private boolean isNotBlack(RgbObj rgbObject) {
         RgbObj blackObj = new RgbObj(0, 0, 0);
         double distance = calculateEuclideanDistance(blackObj, rgbObject);
-        if (distance > 3) {
-            return true;
-        } else {
-            return false;
-        }
+        //Returns true if condition is met
+        return distance > 3;
     }
 
     /**
      * Method to determine if a given rgbObject is white
      *
-     * @param rgbObject rgbObject to test
+     * @param rgbObject RgbObject to test
      * @return True if not White, False if white
      */
     private boolean isNotWhite(RgbObj rgbObject) {
         RgbObj whiteObj = new RgbObj(255, 255, 255);
         double distance = calculateEuclideanDistance(rgbObject, whiteObj);
-        if (distance > 3) {
-            return true;
-        } else {
-            return false;
-        }
+        //Returns true if condition is met
+        return distance > 3;
     }
 
     /**
-     * Calculates teh Euclidean distance between 2 pixels
+     * Calculates the Euclidean distance between 2 pixels
      *
      * @param rgb1 rgb value 1
      * @param rgb2 rgb value 2
